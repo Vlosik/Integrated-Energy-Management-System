@@ -1,0 +1,223 @@
+.notify {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: transparent;
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 40vw;
+    height: 50px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto 30px;
+}
+
+.notify h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.notify ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.notify p {
+    color: white;
+}
+
+.notify li {
+    color: white !important;
+    margin: 5px 0;
+}
+
+.ChatContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 80vh;
+    font-family: Arial, sans-serif;
+    width: 90vw;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+}
+
+.BackButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.BackLink {
+    display: flex;
+    align-items: center;
+    color: black;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bold;
+    background-color: #f0f0f0;
+    padding: 8px 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.BackLink:hover {
+    background-color: #e6e6e6;
+}
+
+.Conversations {
+    width: 30%;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    height: 100%;
+    padding: 15px;
+    border-radius: 10px 0 0 10px;
+}
+
+.Conversation {
+    padding: 15px;
+    border-bottom: 1px solid #eaeaea;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 10px;
+}
+
+.Conversation:hover {
+    background-color: #f0f0f0;
+}
+
+.ChatHeader {
+    margin-bottom: 15px;
+}
+
+.UserName {
+    font-weight: bold;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+}
+
+.UserName svg {
+    margin-right: 10px;
+    font-size: 2em;
+}
+
+.LastMessage {
+    color: black;
+    font-size: 1em;
+    text-align: center;
+}
+
+.ChatBox {
+    width: 70%;
+    height: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 10px 10px 0;
+    position: relative;
+    background-color: white;
+    padding: 20px;
+}
+.Messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.Message {
+    max-width: 60%;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    word-wrap: break-word;
+    margin: 5px 0;
+}
+
+.Message.User {
+    background-color: #fb8a22;
+    align-self: flex-start;
+}
+
+.Message.Admin {
+    background-color: #f0f0f0;
+    align-self: flex-end;
+}
+
+.MessagesContainer {
+    width: 100%;
+    height: 63vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+}
+
+.Messages::-webkit-scrollbar {
+    width: 10px;
+}
+
+.Messages::-webkit-scrollbar-thumb {
+    background-color: #fb8a22;
+    border-radius: 3px;
+}
+
+.MessagesContainer::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.SeenText {
+    font-size: 10px;
+    color: #7a7a7a;
+    margin-top: 5px;
+    text-align: right;
+}
+
+.ChatInput input {
+    margin-left: 100px;
+    width: 60%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.ChatInput button {
+    width: 15%;
+    padding: 10px;
+    background-color: #fb8a22;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 70px;
+}
+
+.ChatInput button:hover {
+    background-color: #e67710;
+}
+
+.EmptyState {
+    font-size: 1.5em;
+    color: #999;
+    padding: 20px;
+}

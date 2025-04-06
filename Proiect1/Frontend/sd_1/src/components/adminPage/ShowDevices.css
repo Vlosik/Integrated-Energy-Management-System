@@ -1,0 +1,163 @@
+.show-devices {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: transparent;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.show-devices .top {
+    width: 100%;
+    padding: 10px;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 2);
+    backdrop-filter: blur(5px);
+}
+
+.show-devices .elements-edit ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.elements-edit li {
+    text-align: center;
+    margin-left: 25px;
+    margin-right: 70px;
+}
+
+.elements-edit .admin {
+    margin-left: 30px;
+    margin-top: 0;
+    font-size: 20px;
+    display: inline-flex;
+    justify-content: space-between;
+    width: auto;
+    text-decoration: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 5);
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(211, 211, 211, .1);
+    border-radius: 15px;
+    color: #D3D3D3;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+.elements-edit .admin .icon {
+    display: inline-flex;
+    position: absolute;
+    transform: translateY(+5%);
+    font-size: 32px;
+    margin: 0;
+    color: rgba(211, 211, 211, .5);
+}
+
+.elements-edit .admin h3 {
+    margin-left: 35px;
+}
+
+.elements-edit .nav {
+    margin-top: 0;
+    font-size: 20px;
+    display: block;
+    width: auto;
+    text-decoration: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 5);
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(211, 211, 211, .2);
+    border-radius: 15px;
+    color: #D3D3D3;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+.nav:hover {
+    background-color: rgba(211, 211, 211, .1);
+}
+
+#show {
+    background-color: #8B4000;
+    color: #D3D3D3;
+}
+
+.add-user .bottom {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.bottom .table-devices {
+    width: 1250px;
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 10px rgba(255, 255, 255, .2);
+    border-radius: 10px;
+    padding: 30px 40px;
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+.table-devices::-webkit-scrollbar {
+    width: 12px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.table-devices::-webkit-scrollbar-thumb {
+    background-color: #8B4000;
+    border-radius: 15px;
+}
+
+.table-devices::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.bottom .table-devices table {
+    width: 100%;
+    table-layout: fixed;
+    margin-bottom: 10px;
+}
+
+.bottom .table-devices td {
+    font-size: 1.5vw;
+    padding: 10px;
+    text-align: center;
+    word-wrap: break-word;
+    border-bottom: 1px solid rgb(167, 166, 164);
+    color: white;
+}
+
+.bottom .table-devices th {
+    color: white;
+    font-size: 1.5vw;
+    padding: 10px;
+    text-align: center;
+    word-wrap: break-word;
+    border-bottom: 1px solid rgb(167, 166, 164);
+}
+
+.table-devices button {
+    background: rgba(211, 211, 211, .5);
+    backdrop-filter: blur(5px);
+    text-align: center;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #8B4000;
+}
+

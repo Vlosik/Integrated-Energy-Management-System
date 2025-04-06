@@ -1,0 +1,90 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: frontend
+    build:
+      context: ./Frontend/sd_1
+    ports:
+      - "3000:3000"
+    depends_on:
+      - user
+      - device
+    networks:
+      - monitoring
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=Host(`frontend.local`)"
+      - "traefik.http.services.frontend.loadbalancer.server.port=3000"  # Portul intern pentru frontend
+
+  user:
+    image: backend
+    build:
+      context: ./SD1_User/SD1_User
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db-user:3306/user
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: adrian1302
+    depends_on:
+      - db-user
+    networks:
+      - monitoring
+    deploy:
+      replicas: 2
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.user.rule=Host(`user.local`)"
+      - "traefik.http.services.user.loadbalancer.server.port=8080"  # Portul intern pentru user backend
+
+  device:
+    image: backend1
+    build:
+      context: ./SD1_Device/SD1_Device
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db-device:3306/device
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: adrian1302
+    depends_on:
+      - db-device
+    networks:
+      - monitoring
+    deploy:
+      replicas: 2
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.device.rule=Host(`device.localhost`)"
+      - "traefik.http.services.device.loadbalancer.server.port=8081"  # Portul intern pentru device backend
+
+  db-user:
+    image: mysql:8.0.40
+    restart: always
+    environment:
+      MYSQL_DATABASE: user
+      MYSQL_ROOT_PASSWORD: adrian1302
+    ports:
+      - "3309:3306"
+    volumes:
+      - db_user:/var/lib/mysql
+    networks:
+      - monitoring
+
+  db-device:
+    image: mysql:8.0.40
+    restart: always
+    environment:
+      MYSQL_DATABASE: device
+      MYSQL_ROOT_PASSWORD: adrian1302
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_device:/var/lib/mysql
+    networks:
+      - monitoring
+
+volumes:
+  db_user:
+  db_device:
+
+networks:
+  monitoring:
+    external: true

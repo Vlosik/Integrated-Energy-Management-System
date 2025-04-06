@@ -1,0 +1,111 @@
+.device-charts {
+    display: flex;
+    margin: 20px;
+    color: white;
+    height: 630px;
+}
+
+.left-panel {
+    width: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    margin-left: 0px;
+    margin-top: 75px;
+    margin-right: 75px;
+}
+.left-panel h2 {
+    text-align: center;
+}
+
+.btn-link {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #A84D00;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-link:hover {
+    background-color: #9c4500;
+    transform: translateY(-2px);
+}
+
+.btn-link:active {
+    background-color: #7d3c00;
+    transform: translateY(1px);
+}
+
+.right-panel {
+    width: 70%;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-data {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}
+
+.charts {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.bar-chart, .line-chart {
+    width: 100%;
+}
+
+.bar-chart h3, .line-chart h3 {
+    text-align: center;
+    color: white;
+}
+
+
+.react-calendar {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 7.5px;
+}
+
+.recharts-cartesian-axis-tick-value {
+    fill: white !important;
+}
+
+.recharts-cartesian-axis-line {
+    stroke: white !important;
+}
+
+.recharts-tooltip-item {
+    color: white !important;
+}
+
+

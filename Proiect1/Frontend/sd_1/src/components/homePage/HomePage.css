@@ -1,0 +1,54 @@
+.HomePage {
+    width: 420px;
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 10px rgba(255, 255, 255, .2);
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+.HomePage h1 {
+    font-size: 36px;
+    text-align: center;
+
+}
+
+.HomePage .input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 45px 20px 20px;
+}
+
+.input-box input::placeholder {
+    color: #fff;
+}
+
+.HomePage button {
+    margin-top: 15px;
+    width: 100%;
+    height: 45px;
+    background: rgba(211, 211, 211, .5);
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    font-weight: 700;
+}

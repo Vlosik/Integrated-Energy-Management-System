@@ -1,0 +1,139 @@
+version: '3.8'
+services:
+  rabbitmq:
+    image: rabbitmq:3.9-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: simulator
+      RABBITMQ_DEFAULT_PASS: simulator
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - monitoring
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.rabbitmq.rule=Host(`rabbitmq.local`)"
+      - "traefik.http.services.rabbitmq.loadbalancer.server.port=5672"  # Portul intern pentru RabbitMQ
+
+  simulator:
+    image: simulator
+    build:
+      context: ./Simulator/SimulatorProducer
+    ports:
+      - "8091:8090"
+    volumes:
+      - ./Simulator/SimulatorProducer/src/main/java/Simulator/producer/config:/app/config
+    networks:
+      - monitoring
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.simulator.rule=Host(`simulator.local`)"
+      - "traefik.http.services.simulator.loadbalancer.server.port=8090"  # Portul intern pentru Simulator
+
+  simulator2:
+    image: simulator
+    build:
+      context: ./Simulator/SimulatorProducer
+    ports:
+      - "8093:8090"
+    volumes:
+      - ./Simulator/SimulatorProducer/src/main/java/Simulator/producer/config:/app/config
+    networks:
+      - monitoring
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.simulator2.rule=Host(`simulator2.local`)"
+      - "traefik.http.services.simulator2.loadbalancer.server.port=8090"  # Portul intern pentru Simulator2
+
+  monitoring-device:
+    image: monitoring-device
+    build:
+      context: ./monitoringDeviceService
+    ports:
+      - "8092:8088"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db-monitoring:3306/monitoring
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: adrian1302
+    depends_on:
+      - db-monitoring
+    networks:
+      - monitoring
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.monitoring-device.rule=Host(`monitoring-device.localhost`)"
+      - "traefik.http.services.monitoring-device.loadbalancer.server.port=8088"  # Portul intern pentru Monitoring Device
+
+  db-monitoring:
+    image: mysql:8.0.40
+    restart: always
+    environment:
+      MYSQL_DATABASE: monitoring
+      MYSQL_ROOT_PASSWORD: adrian1302
+    ports:
+      - "3310:3306"
+    volumes:
+      - db_monitoring:/var/lib/mysql
+    networks:
+      - monitoring
+
+  chat:
+    image: chat
+    build:
+      context: ./App/App
+    ports:
+      - "8071:8070"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db-chat:3306/chat
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: adrian1302
+    depends_on:
+      - db-chat
+    networks:
+      - monitoring
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.monitoring-device.rule=Host(`chat.localhost`)"
+      - "traefik.http.services.monitoring-device.loadbalancer.server.port=8070"  
+
+  db-chat:
+    image: mysql:8.0.40
+    restart: always
+    environment:
+      MYSQL_DATABASE: chat
+      MYSQL_ROOT_PASSWORD: adrian1302
+    ports:
+      - "3315:3306"
+    volumes:
+      - db_chat:/var/lib/mysql
+    networks:
+      - monitoring
+
+  traefik:
+    image: traefik:v2.10
+    container_name: traefik
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"
+      - "8080:8080"
+    networks:
+      - monitoring
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    labels:
+      - "traefik.enable=true"
+
+volumes:
+  rabbitmq_data:
+  db_monitoring:
+  db_chat:
+
+networks:
+  monitoring:
+    external: true
